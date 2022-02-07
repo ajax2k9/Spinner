@@ -15,7 +15,7 @@ function setup(){
         minGuesses = 1000;
     }
     
-    spacing = Math.min(windowWidth,600) / width;
+    spacing = Math.min(windowWidth,900) / width;
     sizeX = width * spacing;
     halfSize = sizeX/2;
     createCanvas(sizeX,sizeX);
