@@ -5,6 +5,8 @@ let sizeX = 0;
 let halfSize = 0;
 let date = 0;
 let winWindow;
+let guesses = 0;
+let minGuesses = 1000;
 function setup(){
     spacing = Math.min(windowWidth,600) / width;
     sizeX = width * spacing;
@@ -31,6 +33,7 @@ function setup(){
 }
 
 function LoadPuzzle(_seed){
+    guesses =0;
     noiseSeed(_seed);
     for(let i = 0;i<width; i++){
         squares[i] = [];
@@ -53,7 +56,7 @@ function mouseClicked() {
 
     if(x<0 || x > width - 1)return false;
     if(y<0 || y > width - 1)return false;
-
+    guesses ++;
     for(let i = x -1 ;i<= x + 1; i++){
         for(let j = y-1; j<= y+ 1; j++){
 
@@ -82,7 +85,13 @@ function mouseClicked() {
     });
 
     if(win){
-        console.log("you win!");
+        let newRecord = false;
+
+        if(guesses < minGuesses){
+            newRecord = true;
+            minGuesses = guesses;
+        }
+        winWindow.Show(guesses,minGuesses,newRecord);
     }
 
   }

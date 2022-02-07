@@ -11,16 +11,17 @@ canvas{
 }
 
 .results{
+    position: absolute;
     display:flex;
 	flex-direction: column;
     align-items: center;
-    
-    width: 600px;
-    height: 400px;
-    background-color: white;
-    border: 1px;
-    border-color: black;
-    border-style: solid;    
+    width: 15%;
+    height: 300px;
+    background-color: grey;
+    color: white;
+    border-radius: 10px;
+    font-weight: bold;
+    font-size: large;
 }
 
 .content{
@@ -28,7 +29,6 @@ canvas{
     display:flex;
     left: 0px;
     top: 0px;
-    
     flex-direction: column;
     align-items: center;
     width: 100%;
@@ -36,4 +36,12 @@ canvas{
     margin-top: 200px;
 }
 
+p{
+    height: 10px;
+}
+
+.okButt{
+    position: absolute;
+    bottom: 5px;
+}
 

@@ -7,8 +7,39 @@ class WinScreen{
         this.box.parent(this.content);
         this.box.addClass("results");
 
-        this.box.html("<h1> You win! </h1>");
-        //this.label.parent(this.box);
+        this.title = createP("Title");
+        this.title.parent(this.box);
+        
+        this.score = createP("Score : ");
+        this.score.parent(this.box);
+        
+        this.minScore = createP("Record : ");
+        this.minScore.parent(this.box);
+
+        this.button1 = createElement("OkButt");
+        this.button1.parent(this.box);
+        this.button1.html("<h2>OK</h2>");
+        this.button1.mousePressed(()=>{
+            this.content.hide();
+        });
+
+        this.button1.class("okbutt");
+
         this.content.hide();
+
+    }
+
+    Show(_score,_minScore,_newRecord){
+        this.content.show();
+        this.content.style("display","flex");
+
+        if(_newRecord){
+            this.title.html("New Record!");
+        } else {
+            this.title.html("You Win!");
+        }    
+
+        this.score.html("Score : "+_score+"");
+        this.minScore.html("Record : "+_minScore+"");
     }
 }
