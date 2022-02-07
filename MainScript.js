@@ -7,6 +7,7 @@ let date = 0;
 let winWindow;
 let guesses = 0;
 let minGuesses;
+let hasWon = false;
 
 function setup(){
     minGuesses = JSON.parse(localStorage.getItem("min_guesses"));
@@ -25,13 +26,13 @@ function setup(){
     winWindow = new WinScreen(0,0);
     
     let button1 = createElement("PuzzButt");
-    button1.html("<h2>Daily Puzzle</h2>");
+    button1.html("Daily Puzzle");
     button1.mousePressed(()=>{
         LoadPuzzle(date);
     });
 
     let button2 = createElement("RandPuzzButt");
-    button2.html("<h2>Random Puzzle</h2>");
+    button2.html("Random Puzzle");
     button2.mousePressed(()=>{
         LoadPuzzle(Math.floor(Math.random() * 1000));
     });
@@ -41,6 +42,7 @@ function setup(){
 
 function LoadPuzzle(_seed){
     guesses =0;
+    hasWon = false;
     noiseSeed(_seed);
     for(let i = 0;i<width; i++){
         squares[i] = [];
@@ -91,7 +93,8 @@ function mouseClicked() {
         });
     });
 
-    if(win){
+    if(win && !hasWon){
+        hasWon = true;
         let newRecord = false;
 
         if(guesses < minGuesses){
