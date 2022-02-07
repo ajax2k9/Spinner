@@ -9,6 +9,9 @@ let guesses = 0;
 let minGuesses;
 let hasWon = false;
 
+p5.disableFriendlyErrors = true; // disables FES
+
+
 function setup(){
     minGuesses = JSON.parse(localStorage.getItem("min_guesses"));
 
