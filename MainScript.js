@@ -6,8 +6,15 @@ let halfSize = 0;
 let date = 0;
 let winWindow;
 let guesses = 0;
-let minGuesses = 1000;
+let minGuesses;
+
 function setup(){
+    minGuesses = JSON.parse(localStorage.getItem("min_guesses"));
+
+    if(minGuesses == undefined){
+        minGuesses = 1000;
+    }
+    
     spacing = Math.min(windowWidth,600) / width;
     sizeX = width * spacing;
     halfSize = sizeX/2;
@@ -92,6 +99,7 @@ function mouseClicked() {
             minGuesses = guesses;
         }
         winWindow.Show(guesses,minGuesses,newRecord);
+        localStorage.setItem("min_guesses",minGuesses);
     }
 
   }
