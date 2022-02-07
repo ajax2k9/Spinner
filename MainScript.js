@@ -6,7 +6,7 @@ let halfSize = 0;
 let date = 0;
 let winWindow;
 function setup(){
-    spacing = windowWidth / width;
+    spacing = Math.min(windowWidth,600) / width;
     sizeX = width * spacing;
     halfSize = sizeX/2;
     createCanvas(sizeX,sizeX);
